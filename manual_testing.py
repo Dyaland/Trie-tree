@@ -26,15 +26,17 @@ class TestTrieManual:
     def clear_screen(self):
         os.system(self.CLEAR)
 
-    def test_insert(self):
+    def is_alpha_or_space(self, input_string):
+        return all(char.isalpha() or char.isspace() for char in input_string)
 
+    def test_insert(self):
         self.clear_screen()
         print('Add a word to the trie.')
         
         while True:
             user_input = input('\nAdd word: ').lower()
 
-            if user_input.isalpha():
+            if self.is_alpha_or_space(user_input):
                 self.clear_screen()
                 try:
                     self.trie.insert(user_input)
@@ -49,14 +51,13 @@ class TestTrieManual:
                 print('Input must be alphabetical.')
 
     def test_search(self):
-        
         self.clear_screen()
         print('Search for a word in the trie.')
         
         while True:
             user_input = input('\nSearch word: ').lower()
 
-            if user_input.isalpha():
+            if self.is_alpha_or_space(user_input):
                 self.clear_screen()
                 
                 try:
@@ -72,14 +73,13 @@ class TestTrieManual:
                 print('Input must be alphabetical.')
 
     def test_starts_with(self):
-        
         self.clear_screen()
         print('Check if a prefix exists in the trie.')
         
         while True:
             user_input = input('\nSearch phrase: ').lower()
 
-            if user_input.isalpha():
+            if self.is_alpha_or_space(user_input):
                 self.clear_screen()
                 
                 try:
@@ -95,14 +95,13 @@ class TestTrieManual:
                 print('Input must be alphabetical.')
 
     def test_prefix_matches(self):
-        
         self.clear_screen()
         print('List all matches for a prefix in the trie.')
         
         while True:
             user_input = input('\nEnter prefix: ').lower()
 
-            if user_input.isalpha():
+            if self.is_alpha_or_space(user_input):
                 self.clear_screen()
 
                 try:
@@ -118,14 +117,13 @@ class TestTrieManual:
                 print('Input must be alphabetical.')
 
     def test_delete(self):
-
         self.clear_screen()
         print('Delete a word in the trie.')
 
         while True:
             user_input = input('\nDelete word: ').lower()
 
-            if user_input.isalpha():
+            if self.is_alpha_or_space(user_input):
                 self.clear_screen()
 
                 try:
@@ -140,36 +138,29 @@ class TestTrieManual:
                 self.clear_screen()
                 print('Input must be alphabetical.')
 
-    def test_all_words(self):
-        """Display all words in the trie."""
-        
+    def test_all_words(self):        
         self.clear_screen()
         if self.trie.root.children:
             print('All words: ', end='')
             for word in self.trie.all_words():
-                print(word, end=' ', flush=True)
+                print(word, end=', ', flush=True)
             print()
         
         else:
             print('No words in the trie.')
 
-    def test_words_count(self):
-        """Count the number of words in the trie."""
-        
+    def test_words_count(self):        
         count = self.trie.words_count()
         self.clear_screen()
         print(f'{count} words in the trie.' if count != 1 else f'{count} word stored in the trie.')
 
-    def test_nodes_count(self):
-        """Count the number of nodes in the trie."""
-        
+    def test_nodes_count(self):        
         count = self.trie.nodes_count()
         self.clear_screen()
         print(f'{count} nodes in the trie.' if count != 1 else f'{count} nodes in the trie.')
 
 
     def run(self):
-
         user_input = ''
         self.clear_screen()
         print('Test the TRIE data structure manually.')

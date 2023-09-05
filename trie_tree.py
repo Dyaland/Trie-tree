@@ -2,13 +2,16 @@ class WordAlreadyExistsError(ValueError):
     def __init__(self, word:str):
         super().__init__(f"'{word}' already exists in the trie.")
 
+
 class WordNotFoundError(ValueError):
     def __init__(self, word):
         super().__init__(f"'{word}' not found in the trie.")
 
+
 class PrefixNotFoundError(ValueError):
     def __init__(self, prefix):
         super().__init__(f"'{prefix}' is not a prefix in the trie.")
+
 
 class WordNotInTrieError(ValueError):
     def __init__(self, word):
@@ -83,7 +86,7 @@ class TrieTree:
                 raise PrefixNotFoundError(prefix)
 
     def prefix_matches(self, prefix: str, strict: bool=False):
-        """Find all words in the trie that start with the input prefix. Set strict=True to not count words with no children as prefixes."""
+        """Find all words in the trie that start with the input prefix. Set strict=True to exclude a word matching the input exactly."""
 
         matching_words = []
 
