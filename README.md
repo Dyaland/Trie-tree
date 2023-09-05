@@ -4,9 +4,9 @@ This repository provides a Python implementation of a Trie data structure design
 ## Features
 1. **Insertion**: The 'insert' method allows you to insert a new word into the Trie. It throws a custom 'WordAlreadyExistsError' if the word already exists in the Trie.
 2. **Search**: The 'search' method performs an exact search for a word in the Trie. If the word does not exist, a custom 'WordNotFoundError' is raised.
-3. **Prefix Search**: The 'starts_with' method checks if a given prefix exists in any of the words stored in the Trie. The strict parameter allows you to control whether to include words that exactly match the prefix but have no further children. If the prefix does not exist, a custom 'PrefixNotFoundError' is raised.
+3. **Prefix Search**: The 'starts_with' method checks if a given prefix exists in any of the words stored in the Trie. The **strict** parameter allows you to control whether to include words that exactly match the prefix but have no further children. If the prefix does not exist, a custom 'PrefixNotFoundError' is raised.
 
-4. **Prefix Matches**: The 'prefix_matches' method returns a list of all words in the Trie that start with a given prefix. The strict parameter allows you to exclude words that exactly match the prefix but have no further children.
+4. **Prefix Matches**: The 'prefix_matches' method returns a list of all words in the Trie that start with a given prefix. The **strict** parameter allows you to exclude words that exactly match the prefix but have no further children.
 
 5. **Deletion**: The 'delete' method deletes a word from the Trie, and it throws a custom 'WordNotInTrieError' if the word does not exist in the Trie.
 
